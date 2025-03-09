@@ -6,27 +6,16 @@
     <title>Support Liloy PisoWiFi</title>
 </head>
 <body>
-    <h1>Help Us Grow!!</h1>
+    <h1>Help Us Grow!</h1>
     <p>Click the button below to share our page on Facebook.</p>
 
-    <!-- ✅ Facebook Share Button (should now appear) -->
+    <!-- ✅ Ensure the button is properly structured -->
     <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.facebook.com/liloy.pisowifi/" 
-       target="_blank" onclick="sharedSuccess()">
+       target="_blank">
         <button style="font-size: 18px; padding: 10px 20px; background-color: #1877F2; color: white; border: none; cursor: pointer;">
             Share on Facebook
         </button>
     </a>
 
-    <script>
-        function sharedSuccess() {
-            console.log("User clicked Share!");
-            localStorage.setItem("fb_shared", "true");
-
-            // ✅ Redirect back to captive portal after sharing
-            setTimeout(function() {
-                window.location.href = "http://192.168.88.8/?shared=true";
-            }, 3000); // Wait 3 sec to allow sharing
-        }
-    </script>
 </body>
 </html>
