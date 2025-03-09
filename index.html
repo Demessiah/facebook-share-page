@@ -6,10 +6,30 @@
     <title>Support Liloy PisoWiFi</title>
 </head>
 <body>
-    <h1>Help Us Grow!</h1>
-    <p>Click the button below to like and share our page.</p>
-    <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.facebook.com/liloy.pisowifi/" target="_blank">
-        <button>Share on Facebook</button>
-    </a>
+   <script>
+    function shareOnFacebook() {
+        FB.ui({
+            method: 'share',
+            href: 'https://www.facebook.com/liloy.pisowifi/' // Your FB page
+        }, function(response) {
+            if (response && !response.error_message) {
+                console.log("User completed the share!");
+
+                // ✅ Store share success in localStorage
+                localStorage.setItem("fb_shared", "true");
+
+                // ✅ Redirect back to the captive portal
+                window.location.href = "http://portal.i-gateway.net/?shared=true";
+            } else {
+                console.log("User canceled the share.");
+            }
+        });
+    }
+</script>
+
+<!-- Share Button -->
+<button onclick="shareOnFacebook()">Share on Facebook</button>
+
+
 </body>
 </html>
