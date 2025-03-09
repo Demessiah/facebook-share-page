@@ -6,34 +6,25 @@
     <title>Support Liloy PisoWiFi</title>
 </head>
 <body>
-    <!-- update -->
-   <script>
-    function shareOnFacebook() {
-        FB.ui({
-            method: 'share',
-            href: 'https://www.facebook.com/liloy.pisowifi/' // Your FB page
-        }, function(response) {
-            if (response && !response.error_message) {
-                console.log("User completed the share!");
+    <h1>Help Us Grow!</h1>
+    <p>Click the button below to share our page on Facebook.</p>
 
-                // ✅ Store share success in localStorage
-                localStorage.setItem("fb_shared", "true");
+    <!-- ✅ Direct Facebook Share Button -->
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.facebook.com/liloy.pisowifi/" 
+       target="_blank" onclick="sharedSuccess()">
+        <button>Share on Facebook</button>
+    </a>
 
-                // ✅ Redirect back to the captive portal
+    <script>
+        function sharedSuccess() {
+            console.log("User clicked Share!");
+            localStorage.setItem("fb_shared", "true");
+
+            // ✅ Redirect back to captive portal after sharing
+            setTimeout(function() {
                 window.location.href = "http://192.168.88.8/?shared=true";
-            } else {
-                console.log("User canceled the share.");
-            }
-        });
-    }
-</script>
-
-<!-- Share Button -->
-<a href="https://www.facebook.com/sharer/sharer.php?u=https://www.facebook.com/liloy.pisowifi/" target="_blank">
-    <button>Share on Facebook</button>
-</a>
-
-
-
+            }, 3000); // Wait 3 sec to allow sharing
+        }
+    </script>
 </body>
 </html>
